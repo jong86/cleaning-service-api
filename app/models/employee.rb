@@ -1,3 +1,2 @@
-class Employee < ApplicationRecord
-  has_many :jobs, class_name: "Job", foreign_key: "employee_id"
+class Employee < User
 end
