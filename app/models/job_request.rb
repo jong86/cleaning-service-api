@@ -4,5 +4,5 @@ class JobRequest < ApplicationRecord
   end
 
   has_many :jobs, class_name: "Job", foreign_key: "job_request_id"
-  belongs_to :client
+  belongs_to :client, class_name: "Client", inverse_of: :jobs
 end

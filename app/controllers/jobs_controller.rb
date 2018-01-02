@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
-  def index
-    @jobs = Employee.find(1).jobs
-    render json: @jobs
+  def show
+    render json: { data: Job.find(params[:id]) }, status: 200
   end
 end
