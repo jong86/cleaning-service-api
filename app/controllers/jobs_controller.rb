@@ -1,5 +1,10 @@
 class JobsController < ApplicationController
   def show
-    render json: { data: Job.find(params[:id]) }, status: 200
+    @job = Job.find(params[:id])
+    render json: {
+      job_data: @job,
+      client: @job.client,
+      employee: @job.employee,
+    }, status: 200
   end
 end
