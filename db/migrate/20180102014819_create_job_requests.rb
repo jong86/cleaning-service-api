@@ -4,6 +4,7 @@ class CreateJobRequests < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :possible_times
       t.string :description
+      t.integer :client_id # FK
 
       t.timestamps
     end
