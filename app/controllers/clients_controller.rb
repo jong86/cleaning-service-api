@@ -14,11 +14,19 @@ class ClientsController < ApplicationController
 
 
   def show
-    @client = Client.find(params[:id])
+    client_data = Client.where(id: params[:id]).select("id, first_name, last_name, username, email, phone_number, address, info")
+    client = Client.find(params[:id])
+
     render json: {
-      user_data: @client,
-      job_requests: @client.job_requests,
-      jobs: @client.jobs,
+      client_data: client_data,
+      job_requests: client.job_requests,
+      jobs: client.jobs.select(
+        'id',
+        'confirmed_time',
+        'time_work_started',
+        'time_work_completed',
+        'is_paid',
+      )
     }, status: 200
   end
 
