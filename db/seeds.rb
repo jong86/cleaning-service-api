@@ -1,10 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
+# DB Seed file
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 
 Employee.create(
   type: 'Employee',
@@ -14,7 +11,7 @@ Employee.create(
   name: 'Fake Person',
   address: '123 Fake St.',
   phone_number: '123-456-7890',
-  availability: 'Weeknights after 6pm'
+  availability: 'Weeknights after 6pm',
 )
   
 Client.create(
@@ -38,8 +35,21 @@ Admin.create(
 JobRequest.create(
   client_id: 2,
   address: '456 Sample Ave.',
-  possible_times: '4-5 Saturdays',
-  description: 'Clean my kitchen please'
+  possible_times: '4pm Saturday',
+  work_description: 'Clean my kitchen please',
+  quantity_hours: 1,
+  interview_requested: false,
+)
+
+JobRequest.create(
+  client_id: 2,
+  address: '12321 Oak St.',
+  possible_times: '7pm Mondays',
+  work_description: 'Need my bathroom cleaned',
+  quantity_hours: 4.5,
+  interview_requested: true,
+  possible_interview_times: '3:45pm on Sunday',
+  interview_notes: 'Meet me at the door on right side of house',
 )
 
 Job.create(
@@ -47,6 +57,23 @@ Job.create(
   employee_id: 1,
   confirmed_time: '09/11/18 12:30',
   time_work_started: '09/11/18 12:31',
-  time_work_completed: '09/11/18 15:44',
-  is_paid: 'false'
+  admin_notes: 'Do a deep cleaning this time',
+)
+
+Job.create(
+  job_request_id: 2,
+  employee_id: 1,
+  confirmed_time: '09/11/18 12:30',
+  time_work_started: '09/11/18 12:31',
+  time_work_completed: '09/11/18 14:32',
+  is_paid: true,
+  admin_notes: "Don't forget the dishes",
+  employee_notes: 'Bathroom was really dirty',
+)
+
+Interview.create(
+  job_request_id: 2,
+  time: '3:45 Sunday',
+  address: '889 Granville St.',
+  notes: 'Meet on right side of house.',
 )

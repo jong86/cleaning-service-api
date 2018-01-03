@@ -10,28 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102052345) do
+ActiveRecord::Schema.define(version: 20180103022156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
+  create_table "interviews", force: :cascade do |t|
+    t.integer "job_request_id"
+    t.string "time"
+    t.string "address"
+    t.string "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "job_requests", force: :cascade do |t|
+    t.integer "client_id"
     t.string "address"
     t.string "possible_times"
-    t.string "description"
-    t.integer "client_id"
+    t.string "work_description"
+    t.decimal "quantity_hours"
+    t.boolean "interview_requested"
+    t.string "possible_interview_times"
+    t.string "interview_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "job_request_id"
     t.datetime "confirmed_time"
     t.datetime "time_work_started"
     t.datetime "time_work_completed"
     t.boolean "is_paid"
-    t.integer "employee_id"
-    t.integer "job_request_id"
+    t.string "admin_notes"
+    t.string "employee_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.string "phone_number"
     t.string "address"
     t.string "availability"
+    t.string "info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
