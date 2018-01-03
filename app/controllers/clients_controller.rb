@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
   def create
     client = Client.new(filtered_params)
-    
+
     if client.valid?
       client.save
       render json: { message: "Creating a new client with this info: #{filtered_params}" }, status: 200
@@ -27,7 +27,9 @@ class ClientsController < ApplicationController
 
   def filtered_params
     params.permit(
-      :name,
+      :first_name,
+      :last_name,
+      :username,
       :email,
       :password,
       :password_confirmation,
