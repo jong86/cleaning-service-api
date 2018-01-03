@@ -1,8 +1,12 @@
 class JobRequestsController < ApplicationController
   def create
-    JobRequest.create(filtered_params)
-    puts "Job request created."
-    render status: 200
+    job_request = JobRequest.new(filtered_params)
+    if job_request.valid?
+      job_request.save
+      render json: { message: "Job request created." }, status: 200
+    else
+      render json: { errors: job_request.errors.messages }, status: 400
+    end
   end
 
   def index
