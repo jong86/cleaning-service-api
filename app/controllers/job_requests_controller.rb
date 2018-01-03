@@ -18,11 +18,16 @@ class JobRequestsController < ApplicationController
   end
   
   def show
-    @job_request = JobRequest.find(params[:id])
-    render json: {
-      job_request_data: @job_request,
-      client: @job_request.client,
-    }, status: 200
+    client_id_of_job_request = JobRequest.find(params[:id]).client_id
+    if current_user[:id].to_i == client_id_of_job_request.to_i
+      job_request = JobRequest.find(params[:id])
+      render json: {
+        job_request: job_request,
+        client: job_request.client,
+      }, status: 200
+    else
+      render json: { message: "Users can only view their own information." }, status: 403
+    end
   end
 
 
