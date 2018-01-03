@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class Admin::EmployeesController < ApplicationController
   def jobs
     Job.where("employee_id = ?", self.id)
   end

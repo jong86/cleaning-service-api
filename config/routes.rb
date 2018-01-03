@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
-  resources :jobs
-  resources :job_requests
-  resources :clients
-  resources :employees
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :clients, except: :index do
+    resources :job_requests, shallow: true
+  end
+
+  namespace :admin do
+    resources :employees, :jobs
+    resources :clients, except: :create
+    resources :job_requests, except: [:create, :update]
+  end
+
+  resources :employees, only: [:show, :update] do
+    resources :jobs, only: [:index, :show, :update], shallow: true
+  end
 
   post 'authenticate', to: 'authentication#authenticate'
 end

@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class Admin::JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     render json: {
