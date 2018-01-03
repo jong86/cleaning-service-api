@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'home#index'
+
   resources :clients, except: :index do
     resources :job_requests, shallow: true
   end

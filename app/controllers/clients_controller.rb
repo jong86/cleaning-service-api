@@ -1,4 +1,11 @@
 class ClientsController < ApplicationController
+  skip_before_action :authenticate_request, only: :create
+
+  def create
+    render json: { message: "create path for client" }, status: 200
+  end
+
+
   def show
     @client = Client.find(params[:id])
     render json: {
