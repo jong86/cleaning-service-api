@@ -8,7 +8,9 @@ Employee.create(
   email: 'e@e.e',
   password: 'password',
   password_confirmation: 'password',
-  name: 'Fake Person',
+  first_name: 'Fake',
+  last_name: 'Person',
+  username: 'fakeperson77',
   address: '123 Fake St.',
   phone_number: '123-456-7890',
   availability: 'Weeknights after 6pm',
@@ -19,7 +21,9 @@ Client.create(
   email: 'c@c.c',
   password: 'password',
   password_confirmation: 'password',
-  name: 'Fake Client',
+  first_name: 'Another',
+  last_name: 'Guy',
+  username: 'anotherguy88',
   address: '789 Something Drive',
   phone_number: '999-111-2222',
 )
@@ -29,7 +33,9 @@ Admin.create(
   email: 'a@a.a',
   password: 'password',
   password_confirmation: 'password',
-  name: 'Admin',
+  first_name: 'Admin',
+  last_name: 'User',
+  username: 'adminuser99',
 )
 
 JobRequest.create(

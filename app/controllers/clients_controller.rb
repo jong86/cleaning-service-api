@@ -2,11 +2,13 @@ class ClientsController < ApplicationController
   skip_before_action :authenticate_request, only: :create
 
   def create
-    if params[:email] == params[:email_confirmation]
+    client = Client.new(filtered_params)
+    
+    if client.valid?
+      client.save
       render json: { message: "Creating a new client with this info: #{filtered_params}" }, status: 200
-      Client.create(filtered_params)
     else
-      render json: { message: "Email and email confirmation don't match." }, status: 400
+      render json: { errors: client.errors.messages }, status: 400
     end
   end
 
