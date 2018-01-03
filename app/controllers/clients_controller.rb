@@ -14,13 +14,10 @@ class ClientsController < ApplicationController
 
 
   def show
-    client_data = Client.where(id: params[:id]).select("id, first_name, last_name, username, email, phone_number, address, info")
-    client = Client.find(params[:id])
-
     render json: {
-      client_data: client_data,
-      job_requests: client.job_requests,
-      jobs: client.jobs.select(
+      client_data: current_user.attributes.except('type', 'password_digest', 'updated_at'),
+      job_requests: current_user.job_requests,
+      jobs: current_user.jobs.select(
         'id',
         'confirmed_time',
         'time_work_started',
