@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :interviews
   resources :clients, except: :index do
     resources :job_requests, shallow: true
   end
@@ -9,6 +8,7 @@ Rails.application.routes.draw do
     resources :employees, :jobs
     resources :clients, except: :create
     resources :job_requests, except: [:create, :update]
+    resources :interviews
   end
 
   resources :employees, only: [:show, :update] do
