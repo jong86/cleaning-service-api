@@ -5,12 +5,12 @@
 
 Employee.create(
   type: 'Employee',
-  email: 'e@e.e',
+  email: 'e@e.com',
   password: 'password',
   password_confirmation: 'password',
   first_name: 'Fake',
   last_name: 'Person',
-  username: 'fakeperson77',
+  username: 'fake_person77',
   address: '123 Fake St.',
   phone_number: '123-456-7890',
   availability: 'Weeknights after 6pm',
@@ -18,24 +18,24 @@ Employee.create(
   
 Client.create(
   type: 'Client',
-  email: 'c@c.c',
+  email: 'c@c.com',
   password: 'password',
   password_confirmation: 'password',
   first_name: 'Another',
   last_name: 'Guy',
-  username: 'anotherguy88',
+  username: 'another_guy88',
   address: '789 Something Drive',
   phone_number: '999-111-2222',
 )
 
 Admin.create(
   type: 'Admin',
-  email: 'a@a.a',
+  email: 'a@a.com',
   password: 'password',
   password_confirmation: 'password',
   first_name: 'Admin',
   last_name: 'User',
-  username: 'adminuser99',
+  username: 'admin_user99',
 )
 
 JobRequest.create(
