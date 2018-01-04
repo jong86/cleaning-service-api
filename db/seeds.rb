@@ -14,7 +14,7 @@ Employee.create(
   phone_number: '123-456-7890',
   availability: 'Weeknights after 6pm',
 )
-  
+
 Client.create(
   email: 'c@c.com',
   password: 'password',
@@ -59,7 +59,6 @@ Job.create(
   job_request_id: 1,
   employee_id: 1,
   confirmed_time: '09/11/18 12:30',
-  time_work_started: '09/11/18 12:31',
   admin_notes: 'Do a deep cleaning this time',
 )
 
