@@ -1,4 +1,8 @@
 class Admin::EmployeesController < ApplicationController
+  def index
+    render json: { message: Employee.all }, status: 200
+  end
+  
   def jobs
     Job.where("employee_id = ?", self.id)
   end

@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20180103022156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "interviews", force: :cascade do |t|
     t.integer "job_request_id"
