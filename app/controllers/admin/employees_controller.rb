@@ -3,10 +3,17 @@ class Admin::EmployeesController < ApplicationController
     employee = Employee.create!(filtered_params)
     render json: {
       message: "Employee created",
-      employee: employee, 
+      employee: employee,
     }, status: 200
   end
-  
+
+  def destroy
+    Employee.destroy(params[:id])
+    render json: {
+      message: "Employee user deleted",
+    }, status: 200
+  end
+
   def index
     render json: {
       message: "Rendering list of all employees",
