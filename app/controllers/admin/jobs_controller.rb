@@ -7,6 +7,13 @@ class Admin::JobsController < ApplicationController
     }
   end
 
+  def destroy
+    Job.destroy(params[:id])
+    render json: {
+      message: "Job deleted",
+    }, status: 200
+  end
+
   def index
     render json: {
       message: "Rendering list of all jobs",
