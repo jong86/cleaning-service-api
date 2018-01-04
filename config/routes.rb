@@ -2,9 +2,12 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :clients, except: :index do
+  resources :clients, except: [:index, :show, :update, :destroy] do
     resources :job_requests, shallow: true
   end
+  resource :client, only: [:update, :destroy]
+  get 'profile', to: 'clients#show'
+
 
   namespace :admin do
     resources :employees, :jobs
@@ -13,7 +16,7 @@ Rails.application.routes.draw do
     resources :interviews
   end
 
-  resources :employees, only: [:show, :update] do
+  resources :employees, only: [:update] do
     resources :jobs, only: [:index, :show, :update], shallow: true
   end
 

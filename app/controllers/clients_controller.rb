@@ -2,18 +2,19 @@ class ClientsController < ApplicationController
   skip_before_action :authenticate_request, only: :create
 
   def create
-    client = Client.new(filtered_params)
-
-    if client.save
-      render json: {
-        message: "New client created",
-        client_data: client.attributes.except('type', 'password_digest', 'updated_at'),
-      }, status: 200
-    else
-      render json: { errors: client.errors.messages }, status: 400
-    end
+    client = Client.create!(filtered_params)
+    render json: {
+      message: "New client created",
+      client_data: client.attributes.except('type', 'password_digest', 'updated_at'),
+    }, status: 200
   end
 
+  def destroy
+    Client.destroy(current_user[:id])
+    render json: {
+      message: "Client user deleted",
+    }, status: 200
+  end
 
   def show
     render json: {
@@ -30,13 +31,13 @@ class ClientsController < ApplicationController
   end
 
   def update
-    id = params[:id].to_i
-    client = Client.find(id).assign_attributes(filtered_params)
-    if client.save
-      render json: { message: client }, status: 200
-    else
-      render json: { errors: client.errors.messages }, status: 400
-    end
+    id = current_user.id
+    client = Client.find(id)
+    client.update!(filtered_params)
+    render json: {
+      message: "Client data updated",
+      client_data: client.attributes.except('type', 'password_digest', 'updated_at')
+    }, status: 200
   end
 
   private
