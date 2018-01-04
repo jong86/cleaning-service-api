@@ -4,9 +4,11 @@ class ClientsController < ApplicationController
   def create
     client = Client.new(filtered_params)
 
-    if client.valid?
-      client.save
-      render json: { message: "Creating a new client with this info: #{filtered_params}" }, status: 200
+    if client.save
+      render json: {
+        message: "New client created",
+        client_data: client.attributes.except('type', 'password_digest', 'updated_at'),
+      }, status: 200
     else
       render json: { errors: client.errors.messages }, status: 400
     end
@@ -27,6 +29,15 @@ class ClientsController < ApplicationController
     }, status: 200
   end
 
+  def update
+    id = params[:id].to_i
+    client = Client.find(id).assign_attributes(filtered_params)
+    if client.save
+      render json: { message: client }, status: 200
+    else
+      render json: { errors: client.errors.messages }, status: 400
+    end
+  end
 
   private
 
