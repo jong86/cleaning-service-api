@@ -4,7 +4,6 @@
 
 
 Employee.create(
-  type: 'Employee',
   email: 'e@e.com',
   password: 'password',
   password_confirmation: 'password',
@@ -17,7 +16,6 @@ Employee.create(
 )
   
 Client.create(
-  type: 'Client',
   email: 'c@c.com',
   password: 'password',
   password_confirmation: 'password',
@@ -29,7 +27,6 @@ Client.create(
 )
 
 Admin.create(
-  type: 'Admin',
   email: 'a@a.com',
   password: 'password',
   password_confirmation: 'password',

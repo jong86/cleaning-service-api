@@ -28,6 +28,16 @@ class Admin::EmployeesController < ApplicationController
     }, status: 200
   end
 
+  def update
+    id = params[:id]
+    employee = Employee.find(id)
+    employee.update!(filtered_params)
+    render json: {
+      message: "Employee data updated",
+      employee_data: employee.attributes
+    }, status: 200
+  end
+
 
   private
 
