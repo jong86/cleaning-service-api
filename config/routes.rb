@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :client, only: [:update, :destroy] do
     resources :job_requests, shallow: true
     resources :jobs, only: [:index, :show]
+    resources :interviews, only: :index
   end
   get 'profile', to: 'clients#show'
 

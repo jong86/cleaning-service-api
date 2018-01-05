@@ -6,6 +6,7 @@ class JobRequest < ApplicationRecord
   validates :quantity_hours, presence: true
 
   has_many :jobs, class_name: "Job", foreign_key: "job_request_id"
+  has_many :interviews, class_name: "Interview", foreign_key: "job_request_id"
   belongs_to :client, class_name: "Client", inverse_of: :jobs
 
   def client
