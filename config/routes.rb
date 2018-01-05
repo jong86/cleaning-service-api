@@ -2,22 +2,23 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :clients, except: [:index, :show, :update, :destroy] do
+  resources :clients, only: :create
+  resource :client, only: [:update, :destroy] do
     resources :job_requests, shallow: true
+    resources :jobs, only: [:index, :show]
   end
-  resource :client, only: [:update, :destroy]
   get 'profile', to: 'clients#show'
 
+  namespace :employees do
+    root :to => "employees#index"
+    resources :jobs, only: [:index, :show, :update]
+  end
 
   namespace :admin do
     resources :employees, :jobs
     resources :clients, except: :create
     resources :job_requests, except: :create
     resources :interviews
-  end
-
-  resources :employees, only: [:update] do
-    resources :jobs, only: [:index, :show, :update], shallow: true
   end
 
   post 'authenticate', to: 'authentication#authenticate'
