@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :employees, :jobs
     resources :clients, except: :create
-    resources :job_requests, except: [:create, :update]
+    resources :job_requests, except: :create
     resources :interviews
   end
 
