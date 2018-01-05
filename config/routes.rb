@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   end
   get 'profile', to: 'clients#show'
 
-  namespace :employees do
-    root :to => "employees#index"
+  namespace :employee do
+    root :to => "employee#index"
     resources :jobs, only: [:index, :show, :update]
   end
 
