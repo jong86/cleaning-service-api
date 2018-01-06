@@ -9,6 +9,11 @@ class CreateJobRequests < ActiveRecord::Migration[5.1]
       t.boolean :interview_requested
       t.string :possible_interview_times
       t.string :interview_notes
+      t.boolean :is_from_guest
+      t.string :guest_first_name
+      t.string :guest_last_name
+      t.string :guest_phone_number
+      t.string :guest_email
 
       t.timestamps
     end
