@@ -22,8 +22,15 @@ class Client::JobRequestsController < ApplicationController
   end
 
   def update
-    current_user.job_requests.update!(params[:id], filtered_params)
-    render json: { message: "Job request updated." }, status: 200
+    # current_user.job_requests.update!(params[:id], filtered_params)
+    # render json: { message: "Job request updated." }, status: 200
+    job_request = current_user.job_requests.find(params[:id])
+
+    job_request.update!(filtered_params)
+    render json: {
+      message: "Client's job request updated",
+      job_request: job_request,
+    }, status: 200
   end
 
   private

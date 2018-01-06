@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :clients, only: :create
+  # resources :clients, only: :create
   namespace :client do
     match '/', to: 'client#destroy', via: [:delete]
     match '/', to: 'client#update', via: [:patch, :put]
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :jobs, only: [:index, :show]
     resources :interviews, only: :index
   end
+  match '/clients', to: 'client/client#create', via: [:post]
   get 'profile', to: 'client/client#show'
 
   namespace :guest do
