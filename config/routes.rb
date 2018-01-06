@@ -3,12 +3,18 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :clients, only: :create
-  resource :client, only: [:update, :destroy] do
+  namespace :client do
+    match '/', to: 'client#destroy', via: [:delete]
+    match '/', to: 'client#update', via: [:patch, :put]
     resources :job_requests, shallow: true
     resources :jobs, only: [:index, :show]
     resources :interviews, only: :index
   end
-  get 'profile', to: 'clients#show'
+  get 'profile', to: 'client/client#show'
+
+  namespace :guest do
+    match '/job_requests', to: 'job_requests#create', via: [:post]
+  end
 
   namespace :employee do
     root :to => "employee#index"

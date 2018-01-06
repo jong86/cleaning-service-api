@@ -1,5 +1,4 @@
 class JobRequest < ApplicationRecord
-  validates :client_id, presence: true
   validates :address, presence: true
   validates :possible_times, presence: true
   validates :work_description, presence: true
@@ -7,9 +6,10 @@ class JobRequest < ApplicationRecord
 
   has_many :jobs, class_name: "Job", foreign_key: "job_request_id"
   has_many :interviews, class_name: "Interview", foreign_key: "job_request_id"
-  belongs_to :client, class_name: "Client", inverse_of: :jobs
 
   def client
-    User.find(self.client_id)
+    if self.client_id
+      User.find(self.client_id)
+    end
   end
 end

@@ -1,9 +1,9 @@
-class JobRequestsController < ApplicationController
+class Client::JobRequestsController < ApplicationController
   def create
-    job_request = JobRequest.create!(filtered_params)
+    job_request = JobRequest.create!(filtered_params.merge({:client_id => current_user[:id]}))
     render json: {
       message: "Job request created.",
-      job_request_data: job_request,
+      job_request_data: current_user.job_requests.find(job_request[:id]),
     }, status: 200
   end
 
@@ -16,11 +16,11 @@ class JobRequestsController < ApplicationController
   def index
     render json: { job_requests: current_user.job_requests }, status: 200
   end
-  
+
   def show
     render json: { job_request: current_user.job_requests.find(params[:id]) }, status: 200
   end
-    
+
   def update
     current_user.job_requests.update!(params[:id], filtered_params)
     render json: { message: "Job request updated." }, status: 200
@@ -30,7 +30,6 @@ class JobRequestsController < ApplicationController
 
   def filtered_params
     params.permit(
-      :client_id,
       :address,
       :possible_times,
       :work_description,

@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class Client::JobsController < ApplicationController
   def index
     render json: {
       message: "Rendering list of all current client's jobs",

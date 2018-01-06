@@ -1,4 +1,4 @@
-class InterviewsController < ApplicationController
+class Client::InterviewsController < ApplicationController
   def index
     render json: {
       message: "Rendering current user's interviews",
