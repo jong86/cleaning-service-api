@@ -1,8 +1,6 @@
 class JobRequest < ApplicationRecord
   validates :address, presence: true
-  validates :possible_times, presence: true
   validates :work_description, presence: true
-  validates :quantity_hours, presence: true
 
   has_many :jobs, class_name: "Job", foreign_key: "job_request_id"
   has_many :interviews, class_name: "Interview", foreign_key: "job_request_id"

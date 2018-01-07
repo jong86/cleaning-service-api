@@ -5,7 +5,7 @@ class Guest::JobRequestsController < ApplicationController
     job_request = JobRequest.create!(filtered_params)
     render json: {
       message: "Job request created.",
-      job_request_data: job_request,
+      job_request: job_request,
     }, status: 200
   end
 

@@ -3,7 +3,7 @@ class Client::JobRequestsController < ApplicationController
     job_request = JobRequest.create!(filtered_params.merge({:client_id => current_user[:id]}))
     render json: {
       message: "Job request created.",
-      job_request_data: current_user.job_requests.find(job_request[:id]),
+      job_request: current_user.job_requests.find(job_request[:id]),
     }, status: 200
   end
 
