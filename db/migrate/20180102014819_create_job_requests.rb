@@ -4,7 +4,7 @@ class CreateJobRequests < ActiveRecord::Migration[5.1]
       t.integer :client_id # FK
       t.string :address
       t.string :possible_times
-      t.string :work_description
+      t.text :work_description
       t.decimal :quantity_hours
       t.boolean :interview_requested
       t.string :possible_interview_times
