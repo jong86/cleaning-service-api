@@ -13,6 +13,7 @@ class CreateJobRequests < ActiveRecord::Migration[5.1]
       t.string :guest_last_name
       t.string :guest_phone_number
       t.string :guest_email
+      t.string :guest_preferred_contact
 
       t.timestamps
     end

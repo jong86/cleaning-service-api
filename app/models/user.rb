@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :type, inclusion: { in: %w(Client Employee Admin), message: "is invalid" }
+  validates :type, inclusion: { in: %w(Client Employee Admin), message: "is invalid. User type can only be 'Client', 'Employee', or 'Admin'" }
   validates :first_name, presence: true, if: lambda { new_record? || !first_name.blank? }
   validates :last_name, presence: true, if: lambda { new_record? || !last_name.blank? }
   validates :username, presence: true, uniqueness: true, format: {

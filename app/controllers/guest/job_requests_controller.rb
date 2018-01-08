@@ -25,6 +25,7 @@ class Guest::JobRequestsController < ApplicationController
       :guest_last_name,
       :guest_phone_number,
       :guest_email,
+      :guest_preferred_contact,
     )
   end
 end

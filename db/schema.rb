@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180103022156) do
     t.integer "client_id"
     t.string "address"
     t.string "possible_times"
-    t.string "work_description"
+    t.text "work_description"
     t.decimal "quantity_hours"
     t.boolean "interview_requested"
     t.string "possible_interview_times"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180103022156) do
     t.string "guest_last_name"
     t.string "guest_phone_number"
     t.string "guest_email"
+    t.string "guest_preferred_contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
