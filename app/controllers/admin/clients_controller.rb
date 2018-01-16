@@ -1,4 +1,4 @@
-class Admin::ClientsController < ApplicationController
+class Admin::ClientsController < Admin::AdminController
   def destroy
     Client.destroy(params[:id])
     render json: {

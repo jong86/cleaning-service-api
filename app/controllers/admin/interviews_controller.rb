@@ -1,4 +1,4 @@
-class Admin::InterviewsController < ApplicationController
+class Admin::InterviewsController < Admin::AdminController
   def create
     interview = Interview.create!(filtered_params)
     render json: {

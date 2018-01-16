@@ -1,4 +1,4 @@
-class Admin::JobsController < ApplicationController
+class Admin::JobsController < Admin::AdminController
   def create
     job = Job.create!(filtered_params)
     render json: {

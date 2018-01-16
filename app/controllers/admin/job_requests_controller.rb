@@ -1,4 +1,4 @@
-class Admin::JobRequestsController < ApplicationController
+class Admin::JobRequestsController < Admin::AdminController
   def destroy
     JobRequest.destroy(params[:id])
     render json: {

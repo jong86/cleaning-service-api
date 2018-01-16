@@ -1,4 +1,4 @@
-class Admin::EmployeesController < ApplicationController
+class Admin::EmployeesController < Admin::AdminController
   def create
     employee = Employee.create!(filtered_params)
     render json: {
