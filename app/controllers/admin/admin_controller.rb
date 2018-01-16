@@ -3,7 +3,7 @@ class Admin::AdminController < ApplicationController
 
   def authenticate_admin
     unless current_user.type == "Admin"
-      render json: { error: 'You are not authorized to access the admin portal' }, status: 401
+      render json: { error: 'You are not authorized to access the admin dashboard' }, status: 401
     end
   end
 end
