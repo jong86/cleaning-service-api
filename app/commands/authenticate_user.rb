@@ -22,9 +22,12 @@ class AuthenticateUser
     elsif (username)
       # Allows users to log in with username too
       # TODO: refactor if possible to eliminate DB double-dipping
-      email = User.where(username: "admin_user99").first[:email]
-      user = User.find_by_email(email)
-      return user if user && user.authenticate(password)
+      user_by_username = User.where(username: username)
+      if (user_by_username.exists?)
+        email = user_by_username[0][:email]
+        user = User.find_by_email(email)
+        return user if user && user.authenticate(password)
+      end
     end
 
     errors.add :user_authentication, 'invalid credentials'
