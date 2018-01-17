@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :dashboard, only: :index
     resources :employees, :jobs
     resources :clients, except: :create
     resources :job_requests, except: :create
