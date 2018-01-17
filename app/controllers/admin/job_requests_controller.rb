@@ -7,9 +7,14 @@ class Admin::JobRequestsController < Admin::AdminController
   end
 
   def index
+    page = params[:p].to_i
+    num_per_page = params[:npp].to_i
+
+    puts page, num_per_page
+
     render json: {
       message: "Rendering list of all job requests",
-      job_requests: JobRequest.all,
+      job_requests: JobRequest.limit(num_per_page).offset(page * num_per_page),
     }, status: 200
   end
 
