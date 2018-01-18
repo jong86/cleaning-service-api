@@ -21,8 +21,8 @@ class Admin::JobRequestsController < Admin::AdminController
 
   def show
     render json: {
-      message: "Rendering specified job request",
-      job_requests: JobRequest.find(params[:id]),
+      message: "Returning specified job request",
+      job_request: JobRequest.find(params[:id]),
     }, status: 200
   end
 
