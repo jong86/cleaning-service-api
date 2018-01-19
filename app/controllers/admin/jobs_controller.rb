@@ -21,16 +21,14 @@ class Admin::JobsController < Admin::AdminController
     puts page, num_per_page
 
     render json: {
-      message: "Page #{page + 1} -- Rows per page #{num_per_page}",
       total_rows: Job.count,
-      jobs: Job.joins(:job_request, :user)
+      jobs: Job.joins(:job_request)
         .select(
           :id,
           :is_paid,
           :'job_requests.work_description',
           :'job_requests.address',
           :created_at,
-          :client,
         )
         .limit(num_per_page)
         .offset(page * num_per_page)
@@ -42,7 +40,7 @@ class Admin::JobsController < Admin::AdminController
   def show
     job = Job.find(params[:id])
     render json: {
-      job_data: job,
+      job: job,
       client: job.client,
       employee: job.employee,
     }, status: 200

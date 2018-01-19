@@ -17,7 +17,6 @@ class Admin::InterviewsController < Admin::AdminController
 
   def index
     render json: {
-      message: "Rendering all interviews",
       interviews: Interview.all,
     }, status: 200
   end
@@ -26,7 +25,6 @@ class Admin::InterviewsController < Admin::AdminController
     id = params[:id]
     interview = Interview.find(id)
     render json: {
-      message: "Rendering specified interview",
       interview: interview,
     }, status: 200
   end

@@ -13,7 +13,6 @@ class Admin::JobRequestsController < Admin::AdminController
     puts page, num_per_page
 
     render json: {
-      message: "Returning page #{page + 1}, num per page: #{num_per_page}",
       total_rows: JobRequest.count,
       job_requests: JobRequest.limit(num_per_page)
         .select(
@@ -31,7 +30,6 @@ class Admin::JobRequestsController < Admin::AdminController
 
   def show
     render json: {
-      message: "Returning specified job request",
       job_request: JobRequest.find(params[:id]),
     }, status: 200
   end
@@ -41,7 +39,6 @@ class Admin::JobRequestsController < Admin::AdminController
 
     job_request.update!(filtered_params)
     render json: {
-      message: "Job request updated",
       job_request: job_request,
     }, status: 200
   end
