@@ -21,8 +21,8 @@ class Admin::JobsController < Admin::AdminController
     puts page, num_per_page
 
     render json: {
-      message: "Returning page #{page + 1}, num per page: #{num_per_page}",
-      total_num: Job.count,
+      message: "Page #{page + 1} -- Rows per page #{num_per_page}",
+      total_rows: Job.count,
       jobs: Job.joins(:job_request)
         .select(
           :id,
