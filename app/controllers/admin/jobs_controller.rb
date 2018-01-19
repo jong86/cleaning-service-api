@@ -23,13 +23,14 @@ class Admin::JobsController < Admin::AdminController
     render json: {
       message: "Page #{page + 1} -- Rows per page #{num_per_page}",
       total_rows: Job.count,
-      jobs: Job.joins(:job_request)
+      jobs: Job.joins(:job_request, :user)
         .select(
           :id,
           :is_paid,
           :'job_requests.work_description',
           :'job_requests.address',
           :created_at,
+          :client,
         )
         .limit(num_per_page)
         .offset(page * num_per_page)
