@@ -14,7 +14,7 @@ class Admin::JobRequestsController < Admin::AdminController
 
     render json: {
       message: "Returning page #{page + 1}, num per page: #{num_per_page}",
-      total_num: JobRequest.count,
+      total_rows: JobRequest.count,
       job_requests: JobRequest.limit(num_per_page).offset(page * num_per_page).order(:created_at).reverse_order,
     }, status: 200
   end
