@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20180103022156) do
     t.datetime "time_work_started"
     t.datetime "time_work_completed"
     t.boolean "is_paid"
-    t.string "admin_notes"
-    t.string "employee_notes"
+    t.text "admin_notes"
+    t.text "employee_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

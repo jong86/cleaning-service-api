@@ -7,8 +7,8 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.datetime :time_work_started
       t.datetime :time_work_completed
       t.boolean :is_paid
-      t.string :admin_notes
-      t.string :employee_notes
+      t.text :admin_notes
+      t.text :employee_notes
 
       t.timestamps
     end
