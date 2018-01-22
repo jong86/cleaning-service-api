@@ -4,7 +4,9 @@
 
 require 'faker'
 
-num = 100
+magnitude = 100
+
+
 
 #
 # Create users
@@ -33,7 +35,7 @@ Employee.create(
 )
 
 employee_user_ids = Array.new
-for i in 0..num
+for i in 0..magnitude
   employee = Employee.create(
     email: Faker::Internet.free_email,
     password: 'password',
@@ -61,7 +63,7 @@ Client.create(
 )
 
 client_user_ids = Array.new
-for i in 0..num
+for i in 0..magnitude
   client = Client.create(
     email: Faker::Internet.free_email,
     password: 'password',
@@ -84,7 +86,7 @@ end
 
 job_request_ids = Array.new
 Faker::Config.locale = 'en-CA'
-for i in 0..num
+for i in 0..magnitude
   job_request = JobRequest.create(
     client_id: client_user_ids.sample,
     address: Faker::Address.street_address,
@@ -109,7 +111,7 @@ end
 # Create jobs (no, I'm not a politician)
 #
 
-for i in 0..num
+for i in 0..(magnitude * 100)
   Job.create(
     job_request_id: job_request_ids.sample,
     employee_id: employee_user_ids.sample,
