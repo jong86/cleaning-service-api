@@ -3,9 +3,7 @@
 #
 
 require 'faker'
-
 magnitude = 100
-
 
 
 #
