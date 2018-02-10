@@ -26,7 +26,7 @@ class Admin::JobsController < Admin::AdminController
         .select(
           :id,
           :is_paid,
-          :'job_requests.work_description',
+          :'job_requests.description',
           :'job_requests.address',
           :created_at,
         )

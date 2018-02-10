@@ -50,7 +50,7 @@ class Admin::JobRequestsController < Admin::AdminController
       :client_id,
       :address,
       :possible_times,
-      :work_description,
+      :description,
       :quantity_hours,
       :interview_requested,
       :possible_interview_times,

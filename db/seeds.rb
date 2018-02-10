@@ -89,7 +89,7 @@ for i in 0..magnitude
     client_id: client_user_ids.sample,
     address: Faker::Address.street_address,
     possible_times: Faker::Date.between(Date.today, 60.days.from_now),
-    work_description: Faker::MostInterestingManInTheWorld.quote,
+    description: Faker::MostInterestingManInTheWorld.quote,
     quantity_hours: Faker::Number.between(1, 8),
     interview_requested: Faker::Boolean.boolean(0.2),
     possible_interview_times: Faker::Date.between(Date.today, 14.days.from_now),
@@ -119,5 +119,9 @@ for i in 0..(magnitude * 100)
     is_paid: Faker::Boolean.boolean(0.5),
     admin_notes: Faker::HitchhikersGuideToTheGalaxy.quote,
     employee_notes: Faker::HitchhikersGuideToTheGalaxy.marvin_quote,
+    address: Faker::Address.street_address,
+    description: Faker::MostInterestingManInTheWorld.quote,
+    phone: Faker::PhoneNumber.phone_number,
+    email: Faker::Internet.free_email,
   )
 end

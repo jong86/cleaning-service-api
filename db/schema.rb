@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180103022156) do
     t.integer "client_id"
     t.string "address"
     t.string "possible_times"
-    t.text "work_description"
+    t.text "description"
     t.decimal "quantity_hours"
     t.boolean "interview_requested"
     t.string "possible_interview_times"
@@ -51,6 +51,10 @@ ActiveRecord::Schema.define(version: 20180103022156) do
     t.boolean "is_paid"
     t.text "admin_notes"
     t.text "employee_notes"
+    t.string "address"
+    t.text "description"
+    t.string "phone"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

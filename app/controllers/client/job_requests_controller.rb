@@ -39,7 +39,7 @@ class Client::JobRequestsController < ApplicationController
     params.permit(
       :address,
       :possible_times,
-      :work_description,
+      :description,
       :quantity_hours,
       :interview_requested,
       :possible_interview_times,
