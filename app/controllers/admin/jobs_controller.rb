@@ -1,6 +1,7 @@
 class Admin::JobsController < Admin::AdminController
   def create
     job = Job.create!(filtered_params)
+    puts "*** CREATING:", job.inspect
     render json: {
       message: "New job created",
       job: job,
@@ -65,6 +66,10 @@ class Admin::JobsController < Admin::AdminController
       :employee_id,
       :confirmed_time,
       :admin_notes,
+      :address,
+      :description,
+      :phone,
+      :email,
     )
   end
 end
