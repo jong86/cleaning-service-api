@@ -10,7 +10,7 @@ class Employee::JobsController < ApplicationController
     id = params[:id]
     render json: {
       message: "Rendering employee's job with id=#{id}",
-      jobs: current_user.jobs.find(id),
+      job: current_user.jobs.find(id),
     }, status: 200
   end
 
@@ -20,7 +20,7 @@ class Employee::JobsController < ApplicationController
     job.update!(filtered_params)
     render json: {
       message: "Updated employee's job with id=#{id}",
-      jobs: current_user.jobs.find(id),
+      job: current_user.jobs.find(id),
     }, status: 200
   end
 
