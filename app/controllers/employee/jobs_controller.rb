@@ -2,7 +2,7 @@ class Employee::JobsController < ApplicationController
   def index
     render json: {
       message: "Rendering employee's list of jobs",
-      jobs: current_user.jobs,
+      jobs: current_user.jobs.order(:confirmed_time),
     }, status: 200
   end
 
