@@ -19,22 +19,20 @@ class Admin::JobsController < Admin::AdminController
     page = params[:p].to_i - 1
     num_per_page = params[:npp].to_i
 
-    puts page, num_per_page
+    puts "You are here", page, num_per_page
 
     render json: {
       total_rows: Job.count,
-      jobs: Job.joins(:job_request)
-        .select(
-          :id,
-          :is_paid,
-          :'job_requests.description',
-          :'job_requests.address',
-          :created_at,
-        )
-        .limit(num_per_page)
-        .offset(page * num_per_page)
-        .order(:created_at)
-        .reverse_order
+      jobs: Job.select(
+        :id,
+        :is_paid,
+        :created_at,
+        :confirmed_time,
+      )
+      .limit(num_per_page)
+      .offset(page * num_per_page)
+      .order(:created_at)
+      .reverse_order
     }, status: 200
   end
 
