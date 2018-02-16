@@ -37,8 +37,7 @@ class Admin::JobsController < Admin::AdminController
       )
       .limit(num_per_page)
       .offset(page * num_per_page)
-      .order(:created_at)
-      .reverse_order
+      .order(:confirmed_time)
     }, status: 200
   end
 
@@ -46,8 +45,6 @@ class Admin::JobsController < Admin::AdminController
     job = Job.find(params[:id])
     render json: {
       job: job,
-      client: job.client,
-      employee: job.employee,
     }, status: 200
   end
 
