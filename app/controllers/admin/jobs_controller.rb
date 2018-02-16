@@ -60,7 +60,6 @@ class Admin::JobsController < Admin::AdminController
 
   def filtered_params
     params.permit(
-      :job_request_id,
       :employee_id,
       :confirmed_time,
       :admin_notes,

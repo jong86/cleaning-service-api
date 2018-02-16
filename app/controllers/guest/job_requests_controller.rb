@@ -15,17 +15,10 @@ class Guest::JobRequestsController < ApplicationController
   def filtered_params
     params.permit(
       :address,
-      :possible_times,
       :description,
-      :quantity_hours,
-      :interview_requested,
-      :possible_interview_times,
-      :interview_notes,
       :guest_first_name,
       :guest_last_name,
-      :guest_phone_number,
       :guest_email,
-      :guest_preferred_contact,
     )
   end
 end

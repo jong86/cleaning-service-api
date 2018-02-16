@@ -20,10 +20,6 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.string "address"
     t.string "possible_times"
     t.text "description"
-    t.decimal "quantity_hours"
-    t.boolean "interview_requested"
-    t.string "possible_interview_times"
-    t.string "interview_notes"
     t.string "guest_first_name"
     t.string "guest_last_name"
     t.string "guest_phone_number"
@@ -35,7 +31,6 @@ ActiveRecord::Schema.define(version: 20180102052345) do
 
   create_table "jobs", force: :cascade do |t|
     t.integer "employee_id"
-    t.integer "job_request_id"
     t.datetime "confirmed_time"
     t.datetime "time_work_started"
     t.datetime "time_work_completed"
