@@ -1,11 +1,17 @@
 class Admin::JobsController < Admin::AdminController
   def create
-    job = Job.create!(filtered_params)
-    puts "*** CREATING:", job.inspect
-    render json: {
-      message: "New job created",
-      job: job,
-    }
+    job = Job.new(filtered_params)
+
+    if job.save!
+      # Broadcast to subscribers
+      ActionCable.server.broadcast 'employees',
+        job: job
+
+      render json: {
+        message: "New job created",
+        job: job,
+      }
+    end
   end
 
   def destroy

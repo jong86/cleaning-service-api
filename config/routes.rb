@@ -31,4 +31,8 @@ Rails.application.routes.draw do
   end
 
   post 'authenticate', to: 'authentication#authenticate'
+
+
+  # Serve websocket cable requests in-process
+  mount ActionCable.server => '/cable'
 end
