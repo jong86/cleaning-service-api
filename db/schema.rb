@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.datetime "confirmed_time"
     t.datetime "time_work_started"
     t.datetime "time_work_completed"
+    t.boolean "bill_sent", default: false
     t.boolean "is_paid", default: false
     t.text "admin_notes"
     t.text "employee_notes"

@@ -29,6 +29,7 @@ class Admin::JobsController < Admin::AdminController
       total_rows: Job.count,
       jobs: Job.select(
         :id,
+        :bill_sent,
         :is_paid,
         :created_at,
         :confirmed_time,
@@ -70,6 +71,7 @@ class Admin::JobsController < Admin::AdminController
       :description,
       :phone,
       :email,
+      :bill_sent,
     )
   end
 end
