@@ -21,6 +21,7 @@ class Admin::JobRequestsController < Admin::AdminController
           :guest_first_name,
           :guest_last_name,
           :created_at,
+          :is_active,
         )
         .offset(page * num_per_page)
         .order(:created_at)
