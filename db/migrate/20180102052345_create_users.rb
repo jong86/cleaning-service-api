@@ -11,7 +11,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :availability
       t.string :info
-
       t.timestamps
     end
   end

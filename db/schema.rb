@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.string "guest_phone_number"
     t.string "guest_email"
     t.string "guest_preferred_contact"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.datetime "confirmed_time"
     t.datetime "time_work_started"
     t.datetime "time_work_completed"
-    t.boolean "is_paid"
+    t.boolean "is_paid", default: false
     t.text "admin_notes"
     t.text "employee_notes"
     t.string "address"
