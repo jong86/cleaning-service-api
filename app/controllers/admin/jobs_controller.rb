@@ -25,8 +25,6 @@ class Admin::JobsController < Admin::AdminController
     page = params[:p].to_i - 1
     num_per_page = params[:npp].to_i
 
-    puts "You are here", page, num_per_page
-
     render json: {
       total_rows: Job.count,
       jobs: Job.select(
@@ -34,6 +32,8 @@ class Admin::JobsController < Admin::AdminController
         :is_paid,
         :created_at,
         :confirmed_time,
+        :time_work_started,
+        :time_work_completed,
       )
       .limit(num_per_page)
       .offset(page * num_per_page)
