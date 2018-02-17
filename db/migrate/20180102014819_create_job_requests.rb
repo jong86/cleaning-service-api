@@ -11,6 +11,8 @@ class CreateJobRequests < ActiveRecord::Migration[5.1]
       t.string :guest_email
       t.string :guest_preferred_contact
 
+      t.boolean :is_active
+
       t.timestamps
     end
   end

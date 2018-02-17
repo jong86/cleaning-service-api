@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180102052345) do
     t.string "guest_phone_number"
     t.string "guest_email"
     t.string "guest_preferred_contact"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

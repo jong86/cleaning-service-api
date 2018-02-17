@@ -7,4 +7,8 @@ class JobRequest < ApplicationRecord
   }, allow_nil: true
 
   belongs_to :client, optional: true
+
+  def init
+    self.is_active = true
+  end
 end
