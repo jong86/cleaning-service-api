@@ -19,11 +19,29 @@ class Employee::JobsController < ApplicationController
     job = current_user.jobs.find(id)
 
     if job.update!(filtered_params)
+
       # Broadcast to subscribers if job is complete
-      if job.time_work_completed
+      employee = job.employee
+
+      # Count how many jobs need to be billed, to show in dashboard
+      numJobsReadyToBill = Job.where('
+        time_work_completed is not null and
+        time_work_started is not null and
+        is_paid is false
+      ').count()
+
+      if job.time_work_started && !job.time_work_completed
         ActionCable.server.broadcast 'admin',
-          message: 'Employee finished job',
-          job: job
+          type: 'started',
+          message: "#{employee.first_name} #{employee.last_name} started a job",
+          job: job,
+          numJobsReadyToBill: numJobsReadyToBill
+      elsif job.time_work_completed
+        ActionCable.server.broadcast 'admin',
+          type: 'completed',
+          message: "#{employee.first_name} #{employee.last_name} finished a job",
+          job: job,
+          numJobsReadyToBill: numJobsReadyToBill
       end
 
       render json: {
