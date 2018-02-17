@@ -6,7 +6,7 @@ class Guest::JobRequestsController < ApplicationController
 
     if job_request.save!
       ActionCable.server.broadcast 'admin',
-        type: 'new_job_request',
+        type: 'NEW_JOB_REQUEST',
         num_active_job_requests: JobRequest.where('is_active is true').count()
 
       render json: {

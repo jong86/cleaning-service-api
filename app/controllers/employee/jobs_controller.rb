@@ -32,13 +32,13 @@ class Employee::JobsController < ApplicationController
 
       if job.time_work_started && !job.time_work_completed
         ActionCable.server.broadcast 'admin',
-          type: 'started',
+          type: 'EMPLOYEE_STARTED_JOB',
           message: "#{employee.first_name} #{employee.last_name} started a job",
           job: job,
           num_jobs_ready_to_bill: num_jobs_ready_to_bill
       elsif job.time_work_completed
         ActionCable.server.broadcast 'admin',
-          type: 'completed',
+          type: 'EMPLOYEE_COMPLETED_JOB',
           message: "#{employee.first_name} #{employee.last_name} finished a job",
           job: job,
           num_jobs_ready_to_bill: num_jobs_ready_to_bill
