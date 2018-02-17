@@ -44,7 +44,6 @@ for i in 0..magnitude
     address: Faker::Address.street_address,
     phone_number: Faker::PhoneNumber.phone_number,
     availability: ['Weeknights after 6pm', 'Weekdays from 9-5', 'Weekends all day'].sample,
-    info: Faker::Seinfeld.quote,
   )
   employee_user_ids << employee.id
 end
