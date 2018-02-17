@@ -24,7 +24,7 @@ class Employee::JobsController < ApplicationController
       employee = job.employee
 
       # Count how many jobs need to be billed, to show in dashboard
-      numJobsReadyToBill = Job.where('
+      num_jobs_ready_to_bill = Job.where('
         time_work_completed is not null and
         time_work_started is not null and
         is_paid is false
@@ -35,13 +35,13 @@ class Employee::JobsController < ApplicationController
           type: 'started',
           message: "#{employee.first_name} #{employee.last_name} started a job",
           job: job,
-          numJobsReadyToBill: numJobsReadyToBill
+          num_jobs_ready_to_bill: num_jobs_ready_to_bill
       elsif job.time_work_completed
         ActionCable.server.broadcast 'admin',
           type: 'completed',
           message: "#{employee.first_name} #{employee.last_name} finished a job",
           job: job,
-          numJobsReadyToBill: numJobsReadyToBill
+          num_jobs_ready_to_bill: num_jobs_ready_to_bill
       end
 
       render json: {

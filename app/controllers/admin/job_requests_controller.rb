@@ -37,10 +37,16 @@ class Admin::JobRequestsController < Admin::AdminController
   def update
     job_request = JobRequest.find(params[:id])
 
-    job_request.update!(filtered_params)
-    render json: {
-      job_request: job_request,
-    }, status: 200
+    if job_request.update!(filtered_params)
+      # Broadcast message
+      ActionCable.server.broadcast 'admin',
+        type: 'job_request_made_inactive',
+        num_active_job_requests: JobRequest.where('is_active is true').count()
+
+      render json: {
+        job_request: job_request,
+      }, status: 200
+    end
   end
 
   private
@@ -55,6 +61,7 @@ class Admin::JobRequestsController < Admin::AdminController
       :interview_requested,
       :possible_interview_times,
       :interview_notes,
+      :is_active,
     )
   end
 end
