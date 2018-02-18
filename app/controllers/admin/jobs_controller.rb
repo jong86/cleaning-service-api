@@ -72,6 +72,8 @@ class Admin::JobsController < Admin::AdminController
       :phone,
       :email,
       :bill_sent,
+      :customer_first_name,
+      :customer_last_name,
     )
   end
 end
