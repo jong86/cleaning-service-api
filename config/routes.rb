@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   namespace :guest do
     match '/job_requests', to: 'job_requests#create', via: [:post]
     match '/billing/:uuid', to: 'jobs#show_bill', via: [:get]
-    match '/billing/:uuid', to: 'jobs#pay_bill', via: [:post]
   end
 
   namespace :employee do

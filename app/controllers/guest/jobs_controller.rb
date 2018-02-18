@@ -7,20 +7,4 @@ class Guest::JobsController < ApplicationController
       message: "showing bill #{uuid}",
     }, status: 200
   end
-
-  def pay_bill
-    uuid = params[:uuid]
-    render json: {
-      message: "paying bill #{uuid}",
-    }, status: 200
-  end
-
-
-  private
-
-  def filtered_params
-    params.permit(
-      :is_paid
-    )
-  end
 end
