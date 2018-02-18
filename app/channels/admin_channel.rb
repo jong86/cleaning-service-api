@@ -11,7 +11,7 @@ class AdminChannel < ApplicationCable::Channel
 
     # Broadcast message
     ActionCable.server.broadcast 'admin',
-      type: 'initial',
+      type: 'INITIAL',
       num_jobs_ready_to_bill: num_jobs_ready_to_bill,
       num_active_job_requests: JobRequest.where('is_active is true').count()
   end

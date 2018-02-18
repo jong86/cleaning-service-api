@@ -41,7 +41,7 @@ class Admin::JobRequestsController < Admin::AdminController
     if job_request.update!(filtered_params)
       # Broadcast message
       ActionCable.server.broadcast 'admin',
-        type: 'job_request_made_inactive',
+        type: 'JOB_REQUEST_MADE_INACTIVE',
         num_active_job_requests: JobRequest.where('is_active is true').count()
 
       render json: {
