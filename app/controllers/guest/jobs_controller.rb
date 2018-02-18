@@ -5,6 +5,7 @@ class Guest::JobsController < ApplicationController
     uuid = params[:uuid]
     render json: {
       message: "showing bill #{uuid}",
+      amount: Job.select('bill_amount').where(['uuid = ?', uuid]).first
     }, status: 200
   end
 end
