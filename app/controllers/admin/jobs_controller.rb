@@ -69,6 +69,7 @@ class Admin::JobsController < Admin::AdminController
         },
         :from => 'railsapp@example.com',
         :subject => 'Hello From Rails',
+        :html_body => "Thank your for your business.<br/>You may click <a href='http://localhost:8080/billing/#{job.uuid}'>here</a> to pay your bill.",
       })
 
 
