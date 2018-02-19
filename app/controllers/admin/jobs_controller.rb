@@ -53,6 +53,25 @@ class Admin::JobsController < Admin::AdminController
     id = params[:id]
     job = Job.find(id)
     if job.update!(filtered_params)
+
+      require 'pony'
+      Pony.mail({
+        :to => 'jon_gaspar@hotmail.com',
+        :via => :smtp,
+        :via_options => {
+          :address              => 'smtp.gmail.com',
+          :port                 => '587',
+          :enable_starttls_auto => true,
+          :user_name            => 'vancleaningservicemailer',
+          :password             => '66hAMzE$2MPp',
+          :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
+          :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
+        },
+        :from => 'railsapp@example.com',
+        :subject => 'Hello From Rails',
+      })
+
+
       render json: {
         message: "Job data updated",
         job_data: job.attributes
