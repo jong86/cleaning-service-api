@@ -52,11 +52,12 @@ class Admin::JobsController < Admin::AdminController
   def update
     id = params[:id]
     job = Job.find(id)
-    job.update!(filtered_params)
-    render json: {
-      message: "Job data updated",
-      job_data: job.attributes
-    }, status: 200
+    if job.update!(filtered_params)
+      render json: {
+        message: "Job data updated",
+        job_data: job.attributes
+      }, status: 200
+    end
   end
 
 
@@ -72,6 +73,7 @@ class Admin::JobsController < Admin::AdminController
       :phone,
       :email,
       :bill_sent,
+      :bill_amount,
       :customer_first_name,
       :customer_last_name,
     )
