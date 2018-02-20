@@ -57,7 +57,7 @@ class Admin::JobsController < Admin::AdminController
       # Send mail w/ link to bill with pony gem
       require 'pony'
       Pony.mail({
-        :to => 'jon_gaspar@hotmail.com',
+        :to => 'vancleaningtestmailer@gmail.com',
         :via => :smtp,
         :via_options => {
           :address              => 'smtp.gmail.com',
@@ -68,8 +68,8 @@ class Admin::JobsController < Admin::AdminController
           :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
           :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
         },
-        :from => 'railsapp@example.com',
-        :subject => 'Hello From Rails',
+        :from => 'vancleaningservicemailer@gmail.com',
+        :subject => 'Your VanCleaning bill is ready',
         :html_body => "Thank your for your business.<br/>You may click <a href='http://localhost:8080/billing?uuid=#{job.uuid}'>here</a> to pay your bill.",
       })
 
