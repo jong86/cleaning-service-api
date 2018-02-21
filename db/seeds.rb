@@ -18,20 +18,21 @@ Admin.create(
   username: 'admin_user',
 )
 
-Employee.create(
-  email: 'e@e.com',
+bob = Employee.create(
+  email: 'fake@employee.com',
   password: 'password',
   password_confirmation: 'password',
-  first_name: 'Employee',
-  last_name: 'User',
+  first_name: 'Bob',
+  last_name: 'Aliceson',
   username: 'employee_user',
-  address: '123 Fake St.',
+  address: '456 Sample Ave.',
   phone_number: '123-456-7890',
   availability: 'Weeknights after 6pm',
   info: 'Some information here',
 )
 
 employee_user_ids = Array.new
+employee_user_ids << bob
 for i in 0..4
   employee = Employee.create(
     email: Faker::Internet.free_email,
@@ -108,7 +109,6 @@ for i in 0..(3)
   Job.create(
     employee_id: employee_user_ids.sample,
     confirmed_time: Faker::Time.between(Date.today, 60.days.from_now, :all),
-    is_paid: Faker::Boolean.boolean(0.5),
     admin_notes: Faker::HitchhikersGuideToTheGalaxy.quote,
     employee_notes: Faker::HitchhikersGuideToTheGalaxy.marvin_quote,
     address: Faker::Address.street_address,
