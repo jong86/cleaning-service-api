@@ -57,9 +57,7 @@ class Admin::JobsController < Admin::AdminController
     if job.update!(filtered_params)
 
       if job.bill_sent
-        # If it is being indicated that bill is sent
         send_bill_in_mail('vancleaningtestmailer@gmail.com', job.uuid)
-
         # TO DO: if error with sending bill, change bill_sent to false
       end
 
