@@ -1,4 +1,6 @@
 class Admin::JobsController < Admin::AdminController
+  include MailHelper
+
   def create
     job = Job.new(filtered_params)
 
@@ -55,24 +57,10 @@ class Admin::JobsController < Admin::AdminController
     if job.update!(filtered_params)
 
       if job.bill_sent
-        # Send mail w/ link to bill with pony gem
-        require 'pony'
-        Pony.mail({
-          :to => 'vancleaningtestmailer@gmail.com',
-          :via => :smtp,
-          :via_options => {
-            :address              => 'smtp.gmail.com',
-            :port                 => '587',
-            :enable_starttls_auto => true,
-            :user_name            => 'vancleaningservicemailer',
-            :password             => '66hAMzE$2MPp',
-            :authentication       => :plain, # :plain, :login, :cram_md5, no auth by default
-            :domain               => "localhost.localdomain" # the HELO domain provided by the client to the server
-          },
-          :from => 'vancleaningservicemailer@gmail.com',
-          :subject => 'Your VanCleaning bill is ready',
-          :html_body => "Thank your for your business.<br/>You may click <a href='http://localhost:8080/billing?uuid=#{job.uuid}'>here</a> to pay your bill.",
-        })
+        # If it is being indicated that bill is sent
+        send_bill_in_mail('vancleaningtestmailer@gmail.com', job.uuid)
+
+        # TO DO: if error with sending bill, change bill_sent to false
       end
 
       # Render response
