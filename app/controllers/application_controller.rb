@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
 
 
   #
-  # Error handling
+  # Some general error handling
   #
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response

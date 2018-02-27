@@ -49,35 +49,6 @@ for i in 0..4
 end
 
 
-# Client.create(
-#   email: 'c@c.com',
-#   password: 'password',
-#   password_confirmation: 'password',
-#   first_name: 'Client',
-#   last_name: 'User',
-#   username: 'client_user',
-#   address: '789 Something Drive',
-#   phone_number: '999-111-2222',
-# )
-
-# client_user_ids = Array.new
-# for i in 0..magnitude
-#   client = Client.create(
-#     email: Faker::Internet.free_email,
-#     password: 'password',
-#     password_confirmation: 'password',
-#     first_name: Faker::Name.first_name,
-#     last_name: Faker::Name.last_name,
-#     username: Faker::Internet.user_name(4..10),
-#     address: Faker::Address.street_address,
-#     phone_number: Faker::PhoneNumber.phone_number,
-#     info: Faker::TheFreshPrinceOfBelAir.quote,
-#   )
-#   client_user_ids << client.id
-# end
-
-
-
 #
 # Create job requests
 #

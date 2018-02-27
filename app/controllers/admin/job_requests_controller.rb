@@ -10,8 +10,6 @@ class Admin::JobRequestsController < Admin::AdminController
     page = params[:p].to_i - 1
     num_per_page = params[:npp].to_i
 
-    puts page, num_per_page
-
     render json: {
       total_rows: JobRequest.count,
       job_requests: JobRequest.limit(num_per_page)
