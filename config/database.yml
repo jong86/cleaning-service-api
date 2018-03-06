@@ -25,6 +25,13 @@ development:
   <<: *default
   database: cleaning-service-api_development
 
+  adapter: postgresql
+  encoding: utf8
+  database: app_development
+  pool: 5
+  username: postgres
+  password:
+
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
